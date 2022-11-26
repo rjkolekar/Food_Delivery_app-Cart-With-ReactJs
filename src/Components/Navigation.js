@@ -1,11 +1,19 @@
 import { NavLink } from 'react-router-dom';
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { CartContext } from '../CartContext';
 
 const Navigation = () => {
 
+    const [isActive,setisActive] = useState([])
+
+    useEffect(()=>{
+        window.addEventListener('scroll', ()=>{
+            window.scrollY  > 60 ? setisActive(true) : setisActive(false)
+        })
+    })
+
     const cartStyle = {
-        background: '#F59E0D',
+        
         display: 'flex',
         padding: '6px 12px',
         borderRadius: '50px'
@@ -14,9 +22,12 @@ const Navigation = () => {
       const { cart } = useContext(CartContext)
     return (
         <>
-            <nav className='container mx-auto flex items-center justify-between p-4'>
-                    <NavLink to="/">
-                        <img style={{ height: 55 }} src="./images/logo.png" alt="logo" />
+            <nav className={ `${ 
+                isActive ? 'bg-red-600 py-1': 'bg-red-500 py-2'} items-center justify-between fixed flex w-full text-white`}
+                >
+            <div className='container flex mx-auto justify-between'>
+                <NavLink to="/">
+                        <img className='pl-20 h-[55px]' src="./images/Pizza_logo.png" alt="logo" />
                     </NavLink>
                     <ul className='flex items-center'>
                         <li><NavLink to="/">Home</NavLink></li>
@@ -27,11 +38,15 @@ const Navigation = () => {
                                     {/* <span>{ cart.totalItems ? cart.totalItems : 0 }</span> */}
                                     <div style={cartStyle}>
                                     <span>{ cart.totalItems ? cart.totalItems : 0 }</span>
-                                    <img className="ml-2" src="/images/cart.png" alt="cart-icon" />
+                                    <img className="ml-2 text-black" src="/images/cart.png" alt="cart-icon" />
                                 </div>
                             </NavLink>
                         </li>
+                        {/* <li className='pl-2 '> */}
+                           {/* <NavLink to='/admin'>Admin</NavLink> </li> */}
                     </ul>
+                    </div>
+                    
             </nav>
         </>
     )
