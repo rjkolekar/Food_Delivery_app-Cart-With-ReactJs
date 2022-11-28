@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 
 import { useContext, useState } from "react";
 import { CartContext } from "../CartContext";
+import { renderIntoDocument } from "react-dom/test-utils";
 
 const Product = (props) => {
   const [isAdding, setIsAdding] = useState(false);
@@ -42,29 +43,32 @@ const Product = (props) => {
 
   return (
     <Link to={`/products/${product._id}`}>
-      <div>
-        <img src={product.image} alt="Product" />
-        <div className="text-center">
-          <h2 className="text-lg font-bold py-2">{product.name}</h2>
-          <span className="bg-gray-200 py-1 rounded-full text-sm px-4">
-            {product.size}
-          </span>
+     <div className=" h-[300px] w-[220px] p-6 ">
+        <div className="border border-purple-300 shadow-lg 	">
+            <div className="h-60 w-40">
+                <img src={product.image} alt="Pizza Image" />
+            </div>
         </div>
-        <div className="flex justify-between items-center mt-4">
-          <span>₹ {product.price}</span>
-          <button
-            disabled={isAdding}
-            onClick={(e) => {
-              addToCart(e, product);
-            }}
-            className={`${
-              isAdding ? "bg-green-500" : "bg-yellow-500"
-            } py-1 px-4 rounded-full font-bold`}
-          >
-            ADD{isAdding ? "ED" : ""}
-          </button>
+        <div className="">
+            {/* <div></div> */}
+                <div className="items-center justify-center flex">
+                <h2 className="font-semibold">{product.name}</h2>
+                </div>
+                <div className="flex items-center justify-center font-extralight ">
+                {product.size}
+                    
+                </div>
+                <div className="flex justify-between font-semibold "> Rs {product.price}
+                
+                  <button onClick={(e) => {addToCart(e,product)} } className={ `${isAdding ? 'bg-purple-500' : 'bg-purple-400' } px-4 py-1  rounded-full `}>
+                    <div>
+                      Add{ isAdding ? 'ed' : ""}
+                    </div>
+                  </button>
+                </div>
         </div>
-      </div>
+     </div>
+
     </Link>
   );
 };

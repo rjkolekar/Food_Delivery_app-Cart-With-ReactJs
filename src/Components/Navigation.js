@@ -23,7 +23,7 @@ const Navigation = () => {
     return (
         <>
             <nav className={ `${ 
-                isActive ? 'bg-red-600 py-1': 'bg-red-500 py-2'} items-center justify-between fixed flex w-full text-white`}
+                isActive ? 'bg-purple-500 text-black': 'bg-purple-400 text-black'} items-center justify-between fixed flex w-full`}
                 >
             <div className='container flex mx-auto justify-between'>
                 <NavLink to="/">
@@ -37,8 +37,8 @@ const Navigation = () => {
                                 {/* <div style={cartStyle}> */}
                                     {/* <span>{ cart.totalItems ? cart.totalItems : 0 }</span> */}
                                     <div style={cartStyle}>
-                                    <span>{ cart.totalItems ? cart.totalItems : 0 }</span>
-                                    <img className="ml-2 text-black" src="/images/cart.png" alt="cart-icon" />
+                                    <span className='text-white'>{ cart.totalItems ? cart.totalItems : 0 }</span>
+                                    <img className="ml-2 text-white" src="/images/cart.png" alt="cart-icon" />
                                 </div>
                             </NavLink>
                         </li>
