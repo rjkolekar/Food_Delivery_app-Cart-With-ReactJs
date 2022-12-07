@@ -3,11 +3,12 @@ import { Link } from "react-router-dom";
 
 import { useContext, useState } from "react";
 import { CartContext } from "../CartContext";
-import { renderIntoDocument } from "react-dom/test-utils";
+// import { renderIntoDocument } from "react-dom/test-utils";
 
 const Product = (props) => {
   const [isAdding, setIsAdding] = useState(false);
   const { cart, setCart } = useContext(CartContext);
+  
   const { product } = props;
 
   const addToCart = (event, product) => {
@@ -30,7 +31,7 @@ const Product = (props) => {
     setIsAdding(true);
     setTimeout(() => {
       setIsAdding(false);
-    }, 1000);
+    }, 2000);
     //
     // const cart = {
     //     items: {
@@ -42,34 +43,40 @@ const Product = (props) => {
   };
 
   return (
+
     <Link to={`/products/${product._id}`}>
-     <div className=" h-[300px] w-[220px] p-6 ">
+      <div className="items-center justify-center ">
         <div className="border border-purple-300 shadow-lg 	">
-            <div className="h-60 w-40">
-                <img src={product.image} alt="Pizza Image" />
-            </div>
+          <div className="h-60 w-40">
+            <img src={product.image} alt="Product" />
+          </div>
         </div>
         <div className="">
-            {/* <div></div> */}
-                <div className="items-center justify-center flex">
-                <h2 className="font-semibold">{product.name}</h2>
-                </div>
-                <div className="flex items-center justify-center font-extralight ">
-                {product.size}
-                    
-                </div>
-                <div className="flex justify-between font-semibold "> Rs {product.price}
-                
-                  <button onClick={(e) => {addToCart(e,product)} } className={ `${isAdding ? 'bg-purple-500' : 'bg-purple-400' } px-4 py-1  rounded-full `}>
-                    <div>
-                      Add{ isAdding ? 'ed' : ""}
-                    </div>
-                  </button>
-                </div>
+          {/* <div></div> */}
+          <div className="items-center justify-center flex">
+            <h2 className="font-semibold">{product.name}</h2>
+          </div>
+          <div className="flex items-center justify-center font-extralight ">
+            {product.size}
+          </div>
+          <div className="flex justify-between font-semibold ">
+            {" "}
+            Rs {product.price}
+            <button
+              onClick={(e) => {
+                addToCart(e, product);
+              }}
+              className={`${
+                isAdding ? "bg-green-500 text-black" : "bg-red-700 text-white"
+              } px-4 py-1  rounded-full `}
+            >
+              <div>Add{isAdding ? "ed" : ""}</div>
+            </button>
+          </div>
         </div>
-     </div>
-
+      </div>
     </Link>
+
   );
 };
 

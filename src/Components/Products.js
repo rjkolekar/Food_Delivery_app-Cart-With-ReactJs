@@ -11,9 +11,9 @@ const Products = () => {
   }, []);
 
   return (
-    <div className="container mx-auto pb-12">
+    <div className="container mx-auto pb-24 items-center justify-between">
       <h1 className="text-lg font-bold my-8">Products</h1>
-      <div className="grid grid-cols-5 my-8 gap-24">
+      <div className="grid grid-cols-2 my-8 gap-24 lg:grid-cols-5">
         {products.map((product) => (
           <Product key={product._id} product={product} />
         ))}

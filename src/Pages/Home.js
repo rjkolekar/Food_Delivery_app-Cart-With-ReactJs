@@ -1,31 +1,45 @@
-import React from 'react'
-import Products from '../Components/Products'
+import React from "react";
+import Products from "../Components/Products";
 const Home = () => {
+  const style = {
+          background : "url('images/866650.jpg') no-repeat",                 
+          backgroundRepeat: "noRepeat",  
+          backgroundSize: "cover",
+          width:"100%",
+          height:"600px",
+          objectFit: "cover"
 
+  }
+  return (
+
+   
   
 
-  return (
     <>
-    <section className='hero py-16 h-[800px] bg-gray-100  mx-auto'>
-      <div className='text-black  flex items-center justify-between p-6'>
-        <div className='w-1/2 '>
-          <img className='w-4/5' src="./images/pizza.png" alt="pizza" />
-        </div>
-        <div className='flex-col justify-center m-6'>
-          <div className='flex items-center text-2xl'>
-            <div className='bg-purple-500 w-10 h-[2px]'></div>Are Are Hungry ?
+      <section className=""  >
+        <div style={ style  } className=" " >
+          {/* <img src="./images/pizza5.webp" alt="pizza" /> */}
+          <div className="text-black  items-center justify-between p-6 ">
+            <div className="flex-col justify-center m-6 mt-60">
+              <div className="flex items-center text-2xl mb-6">
+                <div className="bg-red-600 w-10 h-[2px]"></div>Are Are Hungry
+                ?
+              </div>
+              <h1 className="text-5xl font-bold">
+                Dont Worry <br />We Are Here To Serve
+              </h1>
+              <button className="mt-10 px-6 py-2 rounded-full text-white font-bold bg-red-900">
+                Order Now
+              </button>
+            </div>
           </div>
-          <h1 className='text-4xl font-bold'>Dont Worry We Are Here To Serve</h1>
-          <button className='mt-4 px-6 py-2 rounded-full text-white font-bold bg-purple-500'>Order Now</button>
         </div>
-        
+      </section>
+      <div>
+        <Products />
       </div>
-    </section>
-    <div>
-      <Products />
-    </div>
     </>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;

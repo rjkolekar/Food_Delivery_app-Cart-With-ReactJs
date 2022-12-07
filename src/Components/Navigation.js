@@ -8,7 +8,7 @@ const Navigation = () => {
 
     useEffect(()=>{
         window.addEventListener('scroll', ()=>{
-            window.scrollY  > 60 ? setisActive(true) : setisActive(false)
+            window.scrollY > 60 ? setisActive(true) : setisActive(false)
         })
     })
 
@@ -23,7 +23,7 @@ const Navigation = () => {
     return (
         <>
             <nav className={ `${ 
-                isActive ? 'bg-purple-500 text-black': 'bg-purple-400 text-black'} items-center justify-between fixed flex w-full`}
+                isActive ? 'bg-red-700 text-white fixed': 'bg-red-900 text-white'} items-center justify-between flex w-full`}
                 >
             <div className='container flex mx-auto justify-between'>
                 <NavLink to="/">
@@ -31,13 +31,13 @@ const Navigation = () => {
                     </NavLink>
                     <ul className='flex items-center'>
                         <li><NavLink to="/">Home</NavLink></li>
-                        <li className="ml-6"><NavLink to="/products">Products</NavLink></li>
+                        {/* <li className="ml-6"><NavLink to="/products">Products</NavLink></li> */}
                         <li className="ml-6">
                             <NavLink to="/cart">
-                                {/* <div style={cartStyle}> */}
-                                    {/* <span>{ cart.totalItems ? cart.totalItems : 0 }</span> */}
-                                    <div style={cartStyle}>
-                                    <span className='text-white'>{ cart.totalItems ? cart.totalItems : 0 }</span>
+                                <div style={cartStyle}> 
+                                    <span>{ cart.totalItems ? cart.totalItems : 0 }</span>
+                                    {/* <div style={cartStyle}>
+                                    <span className='text-white'>{ cart.totalItems ? cart.totalItems : 0 }</span> */} 
                                     <img className="ml-2 text-white" src="/images/cart.png" alt="cart-icon" />
                                 </div>
                             </NavLink>

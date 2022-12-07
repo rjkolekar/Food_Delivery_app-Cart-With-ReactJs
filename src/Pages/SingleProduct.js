@@ -7,20 +7,20 @@ const SingleProduct = () => {
   const params = useParams();
 
   useEffect(() => {
-    fetch(`/api/products/${params._id}`)
+    fetch(`https://fakestoreapi.com/products/${params._id}`)
       .then((res) => res.json())
       .then((product) => {
         setProduct(product);
         // console.log(product)
       });
-  }, []);
+  }, [params._id]);
 
   return (
     <div className="container mx-auto mt-12">
       <button className="mb-12 font-bold">Back</button>
       <div className="flex">
-        <img src={product.image} alt="pizza" />
-        <div className="ml-16">
+        <img className="border border-red-300 p-16" src={product.image} alt="Product " />
+        <div className="ml-16 border border-red-300 p-10 ">
           <h1 className="text-xl font-bold">{product.name}</h1>
           <div className="text-md">{product.size}</div>
           <div className="font-bold mt-2">₹ {product.price}</div>
